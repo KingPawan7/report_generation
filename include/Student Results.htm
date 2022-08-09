@@ -1,0 +1,69 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Student Results</title>
+</head>
+    <body style="text-align: center;">      
+      <h1 style="text-align: center;">ABC English School</h1>  
+        <p style="text-align: center;">Pepsicola, Kathmandu</p>
+            Name:<input type="text" id="txtName" required="" value="pawan">  
+            Surname:<input type="text" id="txtSurname" required="" value="shrestha"> 
+            Class:<input type="text" id="txtClass" required="" value="5">
+            Address:<input type="text" id="txtAddress" required="" value="pepsicola"> <br><br>
+        <h3>Insert Marks</h3>
+            <table style="margin-left: auto; margin-right: auto" border="1">
+                <tbody><tr><td>English</td><td><input type="text" id="txtEnglish" value="1"></td></tr>
+                <tr><td>Nepali</td><td><input type="text" id="txtNepali" value="2"></td></tr>
+                <tr><td>Maths</td><td><input type="text" id="txtMaths" value="3"></td></tr>
+                <tr><td>Science</td><td><input type="text" id="txtScience" value="4"></td></tr> 
+                <tr><td>Social</td><td><input type="text" id="txtSocial" value="5"></td></tr> 
+                <tr><td>Health</td><td><input type="text" id="txtHealth" value="6"></td></tr> 
+                <tr><td>Grammar</td><td><input type="text" id="txtGrammar" value="7"></td></tr>             
+            </tbody></table><br><br>
+            <input type="button" value="Get Result" onclick="getReport()">
+                <h2>Report Card</h2>
+                    <table style="margin-left: auto; margin-right: auto" border="1">
+                        <tbody><tr><td>Name</td><td><input type="text" id="txtStudentName" readonly="readonly" value="pawan"></td></tr>
+                        <tr><td>Surname</td><td><input type="text" id="txtStudentSurname" readonly="readonly" value="shrestha"></td></tr>
+                        <tr><td>Class</td><td><input type="text" id="txtStudentClass" readonly="readonly" value="5"></td></tr>
+                        <tr><td>Address</td><td><input type="text" id="txtStudentAddress" readonly="readonly" value="pepsicola"></td></tr>
+                        <tr><td>Total Marks</td><td><input type="text" id="txtTotalMarks" readonly="readonly" value="28"></td></tr>
+                        <tr><td>Average Marks</td><td><input type="text" id="txtAvgMarks" readonly="readonly" value="4"></td></tr>
+                        <tr><td>Grade</td><td><input type="text" id="txtGrade" readonly="readonly" value="D"></td></tr>
+                        <tr><td>Remarks</td><td><input type="text" id="txtResult" readonly="readonly" value="Fail"></td></tr>
+                    </tbody></table>
+<script>
+    function getReport(){
+        var grade = "";  //declare a variable for grade
+        var  result="";  //declare a variable for result
+        var engMarks = document.getElementById('txtEnglish').value;
+        var nepaliMarks = document.getElementById('txtNepali').value;
+        var mathsMarks = document.getElementById('txtMaths').value;
+        var scienceMarks = document.getElementById('txtScience').value;
+        var socialMarks = document.getElementById('txtSocial').value;
+        var healthMarks = document.getElementById('txtHealth').value;
+        var grammarMarks = document.getElementById('txtGrammar').value;
+        var totalMarks = engMarks -(-nepaliMarks)-(-mathsMarks)-(-scienceMarks)-(-socialMarks)-(-healthMarks)-(-grammarMarks);
+        var averageMarks = totalMarks / 7;                                   
+            switch(
+                (averageMarks > 60 && averageMarks <= 100) ? 1 : 
+                (averageMarks > 50 && averageMarks < 60) ? 2 : 
+                (averageMarks > 40 && averageMarks < 50) ? 3 : 0 
+            )
+                {
+                    case 1 :grade = "A";result="Excellent";break;
+                    case 2 :grade = "B"; result="Very good, keep going";break;
+                    case 3 :grade = "C"; result="Study hard";break;
+                    case 0 :grade = "D"; result="Fail";break;
+                }  
+    document.getElementById('txtStudentName').value = document.getElementById('txtName').value;
+    document.getElementById('txtStudentSurname').value = document.getElementById('txtSurname').value;
+    document.getElementById('txtStudentClass').value = document.getElementById('txtClass').value;
+    document.getElementById('txtStudentAddress').value = document.getElementById('txtAddress').value;
+    document.getElementById('txtTotalMarks').value = totalMarks;
+    document.getElementById('txtAvgMarks').value = averageMarks;
+    document.getElementById('txtGrade').value = grade;
+    document.getElementById('txtResult').value = result;
+        }
+    </script>
+
+</body></html>
